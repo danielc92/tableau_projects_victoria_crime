@@ -1,0 +1,90 @@
+LGA CODE (ABS),LGA NAME (CRIME STATS OFFICE),LGA NAME (CP DATABASE),LGA NAME (ABS),REGION,FUNCTIONAL ECONOMIC AREA,LGA TYPE,PARTNERSHIP NAME,SECTION OF STATE,LGA TYPE (ABS),LGA DIVISION,DHHS AREA
+20110,Alpine,Alpine,Alpine (S),Hume,Central Hume,Rural Victoria,Ovens Murray,Regional Victoria,Shires,East Division,Ovens Murray
+20260,Ararat,Ararat,Ararat (RC),Central Highlands,Ararat,Rural Victoria,Central Highlands,Regional Victoria,Rural Cities,West Division,Central Highlands
+20570,Ballarat,Ballarat,Ballarat (C),Central Highlands,Ballarat and Surrounds,Regional Cities,Central Highlands,Regional Victoria,Cities,West Division,Central Highlands
+20660,Banyule,Banyule,Banyule (C),Melbourne,North Eastern Melbourne,Metropolitan Melbourne (Inner-Middle),Northern Metro,Metropolitan Melbourne,Cities,North Division,North Eastern Melbourne
+20740,Bass Coast,Bass Coast,Bass Coast (S),Gippsland,Gippsland South,Melbourne Peri-urban,Gippsland,Regional Victoria,Shires,South Division,Inner Gippsland
+20830,Baw Baw,Baw Baw,Baw Baw (S),Gippsland,Gippsland Latrobe,Melbourne Peri-urban,Gippsland,Regional Victoria,Shires,South Division,Inner Gippsland
+20910,Bayside,Bayside,Bayside (C),Melbourne,Southern Melbourne,Metropolitan Melbourne (Inner-Middle),Inner South-East,Metropolitan Melbourne,Cities,South Division,Bayside Peninsula
+21010,Benalla,Benalla,Benalla (RC),Hume,Central Hume,Rural Victoria,Ovens Murray,Regional Victoria,Rural Cities,East Division,Ovens Murray
+21110,Boroondara,Boroondara,Boroondara (C),Melbourne,Inner Eastern Melbourne,Metropolitan Melbourne (Inner-Middle),Inner South-East,Metropolitan Melbourne,Cities,East Division,Inner Eastern Melbourne
+21180,Brimbank,Brimbank,Brimbank (C),Melbourne,Outer Western Melbourne,Metropolitan Melbourne (Inner-Middle),Western,Metropolitan Melbourne,Cities,West Division,Brimbank Melton
+21270,Buloke,Buloke,Buloke (S),Loddon Mallee North,Buloke LMN,Rural Victoria,Mallee,Regional Victoria,Shires,North Division,Mallee
+21370,Campaspe,Campaspe,Campaspe (S),Loddon Mallee North,Campaspe LMN,Rural Victoria,Loddon Campaspe,Regional Victoria,Shires,North Division,Loddon
+21450,Cardinia,Cardinia,Cardinia (S),Melbourne,South Eastern Melbourne,Metropolitan Melbourne (Growth Areas),Southern,Metropolitan Melbourne,Shires,South Division,Southern Melbourne
+21610,Casey,Casey,Casey (C),Melbourne,South Eastern Melbourne,Metropolitan Melbourne (Growth Areas),Southern,Metropolitan Melbourne,Cities,South Division,Southern Melbourne
+21670,Central Goldfields,Central Goldfields,Central Goldfields (S),Loddon Mallee South,Central Goldfields,Rural Victoria,Loddon Campaspe,Regional Victoria,Shires,North Division,Loddon
+21750,Colac-Otway,Colac Otway,Colac-Otway (S),G21,Colac Otway,Rural Victoria,Barwon,Regional Victoria,Shires,West Division,Barwon
+21830,Corangamite,Corangamite,Corangamite (S),Great South Coast,Warrnambool and Surrounds,Rural Victoria,Great South Coast,Regional Victoria,Shires,West Division,Western District
+21890,Darebin,Darebin,Darebin (C),Melbourne,North Eastern Melbourne,Metropolitan Melbourne (Inner-Middle),Northern Metro,Metropolitan Melbourne,Cities,North Division,North Eastern Melbourne
+22110,East Gippsland,East Gippsland,East Gippsland (S),Gippsland,Gippsland East,Rural Victoria,Gippsland,Regional Victoria,Shires,South Division,Outer Gippsland
+22170,Frankston,Frankston,Frankston (C),Melbourne,Mornington Peninsula,Metropolitan Melbourne (Inner-Middle),Southern,Metropolitan Melbourne,Cities,South Division,Bayside Peninsula
+22250,Gannawarra,Gannawarra,Gannawarra (S),Loddon Mallee North,Gannawarra LMN,Rural Victoria,Mallee,Regional Victoria,Shires,North Division,Mallee
+22310,Glen Eira,Glen Eira,Glen Eira (C),Melbourne,Southern Melbourne,Metropolitan Melbourne (Inner-Middle),Inner South-East,Metropolitan Melbourne,Cities,South Division,Bayside Peninsula
+22410,Glenelg,Glenelg,Glenelg (S),Great South Coast,Glenelg,Rural Victoria,Great South Coast,Regional Victoria,Shires,West Division,Western District
+22490,Golden Plains,Golden Plains,Golden Plains (S),G21,Golden Plains,Rural Victoria,Central Highlands,Regional Victoria,Shires,West Division,Central Highlands
+22620,Greater Bendigo,Greater Bendigo,Greater Bendigo (C),Loddon Mallee South,Bendigo and Surrounds,Regional Cities,Loddon Campaspe,Regional Victoria,Cities,North Division,Loddon
+22670,Greater Dandenong,Greater Dandenong,Greater Dandenong (C),Melbourne,South Eastern Melbourne,Metropolitan Melbourne (Inner-Middle),Southern,Metropolitan Melbourne,Cities,South Division,Southern Melbourne
+22750,Greater Geelong,Greater Geelong,Greater Geelong (C),G21,Geelong and Surrounds,Regional Cities,Barwon,Regional Victoria,Cities,West Division,Barwon
+22830,Greater Shepparton,Greater Shepparton,Greater Shepparton (C),Hume,Goulburn Valley,Regional Cities,Goulburn,Regional Victoria,Cities,East Division,Goulburn
+22910,Hepburn,Hepburn,Hepburn (S),Central Highlands,Ballarat and Surrounds,Rural Victoria,Central Highlands,Regional Victoria,Shires,West Division,Central Highlands
+22980,Hindmarsh,Hindmarsh,Hindmarsh (S),Wimmera Southern Mallee,Hindmarsh WSM,Rural Victoria,Wimmera Southern Mallee,Regional Victoria,Shires,West Division,Western District
+23110,Hobsons Bay,Hobsons Bay,Hobsons Bay (C),Melbourne,Outer Western Melbourne,Metropolitan Melbourne (Inner-Middle),Western,Metropolitan Melbourne,Cities,West Division,Western Melbourne
+23190,Horsham,Horsham,Horsham (RC),Wimmera Southern Mallee,Horsham WSM,Regional Cities,Wimmera Southern Mallee,Regional Victoria,Rural Cities,West Division,Western District
+23270,Hume,Hume,Hume (C),Melbourne,North Western Melbourne,Metropolitan Melbourne (Growth Areas),Northern Metro,Metropolitan Melbourne,Cities,North Division,Hume Moreland
+23350,Indigo,Indigo,Indigo (S),Hume,Upper Hume,Rural Victoria,Ovens Murray,Regional Victoria,Shires,East Division,Ovens Murray
+23430,Kingston,Kingston,Kingston (C),Melbourne,Southern Melbourne,Metropolitan Melbourne (Inner-Middle),Southern,Metropolitan Melbourne,Cities,South Division,Bayside Peninsula
+23670,Knox,Knox,Knox (C),Melbourne,Outer Eastern Melbourne,Metropolitan Melbourne (Inner-Middle),Eastern,Metropolitan Melbourne,Cities,East Division,Outer Eastern Melbourne
+23810,Latrobe,Latrobe,Latrobe (C),Gippsland,Gippsland Latrobe,Regional Cities,Gippsland,Regional Victoria,Cities,South Division,Inner Gippsland
+23940,Loddon,Loddon,Loddon (S),Loddon Mallee South,Bendigo and Surrounds,Rural Victoria,Loddon Campaspe,Regional Victoria,Shires,North Division,Loddon
+24130,Macedon Ranges,Macedon Ranges,Macedon Ranges (S),Loddon Mallee South,Macedon Ranges,Melbourne Peri-urban,Loddon Campaspe,Regional Victoria,Shires,North Division,Loddon
+24210,Manningham,Manningham,Manningham (C),Melbourne,Inner Eastern Melbourne,Metropolitan Melbourne (Inner-Middle),Eastern,Metropolitan Melbourne,Cities,East Division,Inner Eastern Melbourne
+24250,Mansfield,Mansfield,Mansfield (S),Hume,Central Hume,Rural Victoria,Ovens Murray,Regional Victoria,Shires,East Division,Ovens Murray
+24330,Maribyrnong,Maribyrnong,Maribyrnong (C),Melbourne,Outer Western Melbourne,Metropolitan Melbourne (Inner-Middle),Western,Metropolitan Melbourne,Cities,West Division,Western Melbourne
+24410,Maroondah,Maroondah,Maroondah (C),Melbourne,Outer Eastern Melbourne,Metropolitan Melbourne (Inner-Middle),Eastern,Metropolitan Melbourne,Cities,East Division,Outer Eastern Melbourne
+24600,Melbourne,Melbourne,Melbourne (C),Melbourne,Inner Melbourne,Metropolitan Melbourne (Inner-Middle),Inner,Metropolitan Melbourne,Cities,West Division,Western Melbourne
+24650,Melton,Melton,Melton (C),Melbourne,Outer Western Melbourne,Metropolitan Melbourne (Growth Areas),Western,Metropolitan Melbourne,Cities,West Division,Brimbank Melton
+24780,Mildura,Mildura,Mildura (RC),Loddon Mallee North,Mildura LMN,Regional Cities,Mallee,Regional Victoria,Rural Cities,North Division,Mallee
+24850,Mitchell,Mitchell,Mitchell (S),Hume,Lower Hume,Melbourne Peri-urban,Goulburn,Regional Victoria,Shires,East Division,Goulburn
+24900,Moira,Moira,Moira (S),Hume,Goulburn Valley,Rural Victoria,Goulburn,Regional Victoria,Shires,East Division,Goulburn
+24970,Monash,Monash,Monash (C),Melbourne,Inner Eastern Melbourne,Metropolitan Melbourne (Inner-Middle),Eastern,Metropolitan Melbourne,Cities,East Division,Inner Eastern Melbourne
+25060,Moonee Valley,Moonee Valley,Moonee Valley (C),Melbourne,Outer Western Melbourne,Metropolitan Melbourne (Inner-Middle),Western,Metropolitan Melbourne,Cities,West Division,Western Melbourne
+25150,Moorabool,Moorabool,Moorabool (S),Central Highlands,Moorabool,Melbourne Peri-urban,Central Highlands,Regional Victoria,Shires,West Division,Central Highlands
+25250,Moreland,Moreland,Moreland (C),Melbourne,North Western Melbourne,Metropolitan Melbourne (Inner-Middle),Northern Metro,Metropolitan Melbourne,Cities,North Division,Hume Moreland
+25340,Mornington Peninsula,Mornington Peninsula,Mornington Peninsula (S),Melbourne,Mornington Peninsula,Metropolitan Melbourne (Inner-Middle),Southern,Metropolitan Melbourne,Shires,South Division,Bayside Peninsula
+25430,Mount Alexander,Mount Alexander,Mount Alexander (S),Loddon Mallee South,Bendigo and Surrounds,Rural Victoria,Loddon Campaspe,Regional Victoria,Shires,North Division,Loddon
+25490,Moyne,Moyne,Moyne (S),Great South Coast,Warrnambool and Surrounds,Rural Victoria,Great South Coast,Regional Victoria,Shires,West Division,Western District
+25620,Murrindindi,Murrindindi,Murrindindi (S),Hume,Lower Hume,Melbourne Peri-urban,Goulburn,Regional Victoria,Shires,East Division,Goulburn
+25710,Nillumbik,Nillumbik,Nillumbik (S),Melbourne,North Eastern Melbourne,Metropolitan Melbourne (Inner-Middle),Northern Metro,Metropolitan Melbourne,Shires,North Division,North Eastern Melbourne
+25810,Northern Grampians,Northern Grampians,Northern Grampians (S),Wimmera Southern Mallee,Northern Grampians WSM,Rural Victoria,Wimmera Southern Mallee,Regional Victoria,Shires,West Division,Western District
+25900,Port Phillip,Port Phillip,Port Phillip (C),Melbourne,Inner Melbourne,Metropolitan Melbourne (Inner-Middle),Inner,Metropolitan Melbourne,Cities,South Division,Bayside Peninsula
+25990,Pyrenees,Pyrenees,Pyrenees (S),Central Highlands,Ballarat and Surrounds,Rural Victoria,Central Highlands,Regional Victoria,Shires,West Division,Central Highlands
+26080,Queenscliffe,Queenscliffe,Queenscliffe (B),G21,Geelong and Surrounds,Rural Victoria,Barwon,Regional Victoria,Boroughs,West Division,Central Highlands
+26170,South Gippsland,South Gippsland,South Gippsland (S),Gippsland,Gippsland South,Rural Victoria,Gippsland,Regional Victoria,Shires,South Division,Inner Gippsland
+26260,Southern Grampians,Southern Grampians,Southern Grampians (S),Great South Coast,Southern Grampians,Rural Victoria,Great South Coast,Regional Victoria,Shires,West Division,Western District
+26350,Stonnington,Stonnington,Stonnington (C),Melbourne,Inner Melbourne,Metropolitan Melbourne (Inner-Middle),Inner South-East,Metropolitan Melbourne,Cities,South Division,Bayside Peninsula
+26430,Strathbogie,Strathbogie,Strathbogie (S),Hume,Goulburn Valley,Rural Victoria,Goulburn,Regional Victoria,Shires,East Division,Goulburn
+26490,Surf Coast,Surf Coast,Surf Coast (S),G21,Geelong and Surrounds,Rural Victoria,Barwon,Regional Victoria,Shires,West Division,Barwon
+26610,Swan Hill,Swan Hill,Swan Hill (RC),Loddon Mallee North,Swan Hill LMN,Rural Victoria,Mallee,Regional Victoria,Rural Cities,North Division,Mallee
+26670,Towong,Towong,Towong (S),Hume,Upper Hume,Rural Victoria,Ovens Murray,Regional Victoria,Shires,East Division,Ovens Murray
+26700,Wangaratta,Wangaratta,Wangaratta (RC),Hume,Central Hume,Regional Cities,Ovens Murray,Regional Victoria,Rural Cities,East Division,Ovens Murray
+26730,Warrnambool,Warrnambool,Warrnambool (C),Great South Coast,Warrnambool and Surrounds,Regional Cities,Great South Coast,Regional Victoria,Cities,West Division,Western District
+26810,Wellington,Wellington,Wellington (S),Gippsland,Gippsland Latrobe,Rural Victoria,Gippsland,Regional Victoria,Shires,South Division,Outer Gippsland
+26890,West Wimmera,West Wimmera,West Wimmera (S),Wimmera Southern Mallee,West Wimmera WSM,Rural Victoria,Wimmera Southern Mallee,Regional Victoria,Shires,West Division,Western District
+26980,Whitehorse,Whitehorse,Whitehorse (C),Melbourne,Inner Eastern Melbourne,Metropolitan Melbourne (Inner-Middle),Eastern,Metropolitan Melbourne,Cities,East Division,Inner Eastern Melbourne
+27070,Whittlesea,Whittlesea,Whittlesea (C),Melbourne,North Western Melbourne,Metropolitan Melbourne (Growth Areas),Northern Metro,Metropolitan Melbourne,Cities,North Division,North Eastern Melbourne
+27170,Wodonga,Wodonga,Wodonga (RC),Hume,Upper Hume,Regional Cities,Ovens Murray,Regional Victoria,Rural Cities,East Division,Ovens Murray
+27260,Wyndham,Wyndham,Wyndham (C),Melbourne,Outer Western Melbourne,Metropolitan Melbourne (Growth Areas),Western,Metropolitan Melbourne,Cities,West Division,Western Melbourne
+27350,Yarra,Yarra,Yarra (C),Melbourne,Inner Melbourne,Metropolitan Melbourne (Inner-Middle),Inner,Metropolitan Melbourne,Cities,North Division,North Eastern Melbourne
+27450,Yarra Ranges,Yarra Ranges,Yarra Ranges (S),Melbourne,Outer Eastern Melbourne,Metropolitan Melbourne (Inner-Middle),Eastern,Metropolitan Melbourne,Shires,East Division,Outer Eastern Melbourne
+27630,Yarriambiack,Yarriambiack,Yarriambiack (S),Wimmera Southern Mallee,Yarriambiack WSM,Rural Victoria,Wimmera Southern Mallee,Regional Victoria,Shires,West Division,Western District
+OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,Northern Territory,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA
+OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,Tasmania,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA
+OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,Not stated,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA
+OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,Australian Capital Territory,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA
+OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,Queensland,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA
+OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,Unincorporated,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA
+OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,Overseas,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA
+OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,Western Australia,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA
+OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,New South Wales,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA
+OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,South Australia,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA,OUTSIDE OF VICTORIA

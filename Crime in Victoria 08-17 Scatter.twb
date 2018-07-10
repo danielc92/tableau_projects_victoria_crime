@@ -1,0 +1,2401 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 10500.18.0404.1406                               -->
+<workbook original-version='10.3' source-build='10.5.3 (10500.18.0404.1406)' source-platform='mac' upgrade-extracts='false' version='10.5' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <repository-location derived-from='https://p03890.internal.vic.gov.au/t/childprotection/workbooks/CrimeStats13-17?rev=2.6' id='CrimeinVictoria_0' path='/workbooks' revision='1.0' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <style>
+    <style-rule element='title'>
+      <format attr='font-weight' value='normal' />
+    </style-rule>
+    <style-rule element='dash-title'>
+      <format attr='font-weight' value='normal' />
+    </style-rule>
+    <style-rule element='story-title'>
+      <format attr='font-weight' value='normal' />
+    </style-rule>
+    <style-rule element='tooltip'>
+      <format attr='font-weight' value='normal' />
+    </style-rule>
+    <style-rule element='all'>
+      <format attr='font-family' value='Helvetica' />
+    </style-rule>
+  </style>
+  <datasources>
+    <datasource hasconnection='false' inline='true' name='Parameters' version='10.5'>
+      <aliases enabled='yes' />
+      <column caption='Sort (Crime Division)' datatype='string' name='[//offence count Parameter]' param-domain-type='list' role='measure' type='nominal' value='&quot;E Justice procedures offences&quot;'>
+        <calculation class='tableau' formula='&quot;E Justice procedures offences&quot;' />
+        <members>
+          <member value='&quot;A Crimes against the person&quot;' />
+          <member value='&quot;B Property and deception offences&quot;' />
+          <member value='&quot;C Drug offences&quot;' />
+          <member value='&quot;D Public order and security offences&quot;' />
+          <member value='&quot;E Justice procedures offences&quot;' />
+          <member value='&quot;F Other offences&quot;' />
+        </members>
+      </column>
+      <column caption='Compare Lga Crime Rate' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;FY2016 &amp; FY2017&quot;'>
+        <calculation class='tableau' formula='&quot;FY2016 &amp; FY2017&quot;' />
+        <aliases>
+          <alias key='&quot;FY2015 &amp; FY2016&quot;' value='FY2015 &amp; FY2016' />
+        </aliases>
+        <members>
+          <member value='&quot;FY2013 &amp; FY2014&quot;' />
+          <member value='&quot;FY2014 &amp; FY2015&quot;' />
+          <member alias='FY2015 &amp; FY2016' value='&quot;FY2015 &amp; FY2016&quot;' />
+          <member value='&quot;FY2016 &amp; FY2017&quot;' />
+        </members>
+      </column>
+      <column alias='Descending' caption='Sort (Order)' datatype='integer' name='[Sort (Crime Division) (copy)]' param-domain-type='list' role='measure' type='quantitative' value='-1'>
+        <calculation class='tableau' formula='-1' />
+        <aliases>
+          <alias key='-1' value='Descending' />
+          <alias key='1' value='Ascending' />
+        </aliases>
+        <members>
+          <member alias='Ascending' value='1' />
+          <member alias='Descending' value='-1' />
+        </members>
+      </column>
+      <column caption='Choose a metric' datatype='string' name='[Sort (Order) (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;Counts as \% of Year&quot;'>
+        <calculation class='tableau' formula='&quot;Counts as % of Year&quot;' />
+        <members>
+          <member value='&quot;Counts&quot;' />
+          <member value='&quot;Counts as \% of DHHS Area&quot;' />
+          <member value='&quot;Counts as \% of DHHS Division&quot;' />
+          <member value='&quot;Counts as \% of Year&quot;' />
+          <member value='&quot;YOY Growth&quot;' />
+        </members>
+      </column>
+    </datasource>
+    <datasource caption='Extract+ (Multiple Connections)' inline='true' name='federated.0ii8qw81w8uhqg12qhffa0aqxsn2' version='10.5'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='CRIME_VICTORIA_LGA_2013-17' name='excel-direct.1g20am00dpik4u18eemrq1t8sl7x'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='/Users/danielcorcoran/Desktop/Tableau (mac)/Tableau Public Projects/Crime/CRIME_STATS_VICTORIA_LGA_2008-17.xlsx' interpretationMode='0' password='' server='' validate='no' workgroup-auth-mode='as-is' />
+          </named-connection>
+          <named-connection caption='cp_regions_new' name='textscan.1dcas1i12g19qm10yupc31qdh7ot'>
+            <connection class='textscan' directory='/Users/danielcorcoran/Desktop/Tableau (mac)/Tableau Public Projects/Crime' filename='cp_regions_new.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation join='right' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='TRIM(STR([cp_regions_new.csv].[LGA CODE (ABS)]))' />
+              <expression op='TRIM(STR([VIC_CRIME_2008-17].[lga_code]))' />
+            </expression>
+          </clause>
+          <relation connection='textscan.1dcas1i12g19qm10yupc31qdh7ot' name='cp_regions_new.csv' table='[cp_regions_new#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_AU' separator=','>
+              <column datatype='string' name='LGA CODE (ABS)' ordinal='0' />
+              <column datatype='string' name='LGA NAME (CRIME STATS OFFICE)' ordinal='1' />
+              <column datatype='string' name='LGA NAME (CP DATABASE)' ordinal='2' />
+              <column datatype='string' name='LGA NAME (ABS)' ordinal='3' />
+              <column datatype='string' name='REGION' ordinal='4' />
+              <column datatype='string' name='FUNCTIONAL ECONOMIC AREA' ordinal='5' />
+              <column datatype='string' name='LGA TYPE' ordinal='6' />
+              <column datatype='string' name='PARTNERSHIP NAME' ordinal='7' />
+              <column datatype='string' name='SECTION OF STATE' ordinal='8' />
+              <column datatype='string' name='LGA TYPE (ABS)' ordinal='9' />
+              <column datatype='string' name='LGA DIVISION' ordinal='10' />
+              <column datatype='string' name='DHHS AREA' ordinal='11' />
+            </columns>
+          </relation>
+          <relation connection='excel-direct.1g20am00dpik4u18eemrq1t8sl7x' name='VIC_CRIME_2008-17' table='[&apos;VIC_CRIME_2008-17$&apos;]' type='table'>
+            <columns gridOrigin='A1:K10001:no:A1:K10001:0' header='yes' outcome='6'>
+              <column datatype='integer' name='Year ending December' ordinal='0' />
+              <column datatype='string' name='Local Government Area' ordinal='1' />
+              <column datatype='string' name='Offence Division' ordinal='2' />
+              <column datatype='string' name='Offence Subdivision' ordinal='3' />
+              <column datatype='string' name='Offence Subgroup' ordinal='4' />
+              <column datatype='integer' name='Offence Count' ordinal='5' />
+              <column datatype='real' name='Rate per 100,000 population' ordinal='6' />
+              <column datatype='integer' name='lga_code' ordinal='7' />
+              <column datatype='integer' name='junction_key' ordinal='8' />
+              <column datatype='integer' name='vic_erp' ordinal='9' />
+              <column datatype='integer' name='lga_erp' ordinal='10' />
+            </columns>
+          </relation>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_AU&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LGA CODE (ABS)</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[LGA CODE (ABS)]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>LGA CODE (ABS)</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LGA NAME (CRIME STATS OFFICE)</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[LGA NAME (CRIME STATS OFFICE)]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>LGA NAME (CRIME STATS OFFICE)</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LGA NAME (CP DATABASE)</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[LGA NAME (CP DATABASE)]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>LGA NAME (CP DATABASE)</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LGA NAME (ABS)</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[LGA NAME (ABS)]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>LGA NAME (ABS)</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>REGION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[REGION]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>REGION</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FUNCTIONAL ECONOMIC AREA</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[FUNCTIONAL ECONOMIC AREA]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>FUNCTIONAL ECONOMIC AREA</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LGA TYPE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[LGA TYPE]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>LGA TYPE</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PARTNERSHIP NAME</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[PARTNERSHIP NAME]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>PARTNERSHIP NAME</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>SECTION OF STATE</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[SECTION OF STATE]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>SECTION OF STATE</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LGA TYPE (ABS)</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[LGA TYPE (ABS)]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>LGA TYPE (ABS)</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LGA DIVISION</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[LGA DIVISION]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>LGA DIVISION</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DHHS AREA</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[DHHS AREA]</local-name>
+            <parent-name>[cp_regions_new.csv]</parent-name>
+            <remote-alias>DHHS AREA</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year ending December</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Year ending December]</local-name>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias>Year ending December</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Local Government Area</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Local Government Area]</local-name>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias>Local Government Area</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RAU_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Offence Division</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Offence Division]</local-name>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias>Offence Division</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RAU_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Offence Subdivision</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Offence Subdivision]</local-name>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias>Offence Subdivision</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RAU_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Offence Subgroup</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Offence Subgroup]</local-name>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias>Offence Subgroup</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RAU_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Offence Count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Offence Count]</local-name>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias>Offence Count</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Rate per 100,000 population</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Rate per 100,000 population]</local-name>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias>Rate per 100,000 population</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lga_code</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[lga_code]</local-name>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias>lga_code</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>junction_key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[junction_key]</local-name>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias>junction_key</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>vic_erp</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[vic_erp]</local-name>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias>vic_erp</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>lga_erp</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[lga_erp]</local-name>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias>lga_erp</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[VIC_CRIME_2008-17]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:K10001:no:A1:K10001:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Difference' datatype='real' default-format='p0.00%' name='[Calculation1]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='(ZN(SUM([Offence Count])) - LOOKUP(ZN(SUM([Offence Count])), -1)) / ABS(LOOKUP(ZN(SUM([Offence Count])), -1))'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='[cf] dhhs area population' datatype='integer' name='[Calculation_191965935314153473]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_786159670315520000],[DHHS AREA] : SUM({FIXED [Calculation_786159670315520000], [DHHS AREA],[LGA NAME (ABS)] : MIN([lga_erp])})}' />
+      </column>
+      <column caption='[cf] dhhs rate per 1,000' datatype='real' default-format='n#,##0.00;-#,##0.00' name='[Calculation_191965935314894850]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_191965935315476483] / [Calculation_191965935314153473] *1000' />
+      </column>
+      <column caption='[cf] dhhs area offence sum' datatype='integer' name='[Calculation_191965935315476483]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_786159670315520000], [DHHS AREA], [Offence Division] : SUM([Offence Count])}' />
+      </column>
+      <column caption='[cf] last year lga count percent' datatype='real' default-format='p0.00%' name='[Calculation_322570326621573120]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_577586655471829002]/([Calculation_577586655471829002] + [[cf]] last year lga count (copy)])' />
+      </column>
+      <column caption='=Date(fixed)' datatype='date' name='[Calculation_410672029702418435]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='DATE(&quot;13-1-&quot; + STR([Year ending December]))' />
+      </column>
+      <column caption='Calculation3' datatype='integer' name='[Calculation_410672029703233540]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Offence Count] * 3' />
+      </column>
+      <column caption='//table builder values' datatype='string' name='[Calculation_445574893558878208]' role='measure' type='nominal'>
+        <calculation class='tableau' formula='CASE [Parameters].[Sort (Order) (copy)]&#13;&#10;&#13;&#10;WHEN &quot;Counts&quot; THEN STR(SUM([Offence Count]))&#13;&#10;&#13;&#10;WHEN &quot;Counts as % of DHHS Area&quot; THEN STR(ROUND(100*SUM([Offence Count])/SUM({FIXED [Calculation_786159670315520000], [Offence Subdivision], [DHHS AREA]:SUM([Offence Count])}),2)) + &quot; %&quot;&#13;&#10;&#13;&#10;WHEN &quot;Counts as % of DHHS Division&quot; THEN STR(ROUND(100*SUM([Offence Count])/SUM({FIXED [Calculation_786159670315520000], [Offence Subdivision], [LGA DIVISION]:SUM([Offence Count])}),2)) + &quot; %&quot;&#13;&#10;&#13;&#10;WHEN &quot;Counts as % of Year&quot; THEN STR(ROUND(100*SUM([Offence Count])/SUM({FIXED [Calculation_786159670315520000], [Offence Subdivision] :SUM([Offence Count])}),2)) + &quot; %&quot;&#13;&#10;&#13;&#10;WHEN &quot;YOY Growth&quot; THEN STR(ROUND(100*(SUM([Offence Count])/LOOKUP(SUM([Offence Count]),-1)-1),2)) + &quot; %&quot;&#13;&#10;&#13;&#10;END'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='[cf] lga crime rate x-axis' datatype='real' default-format='n#,##0.00;-#,##0.00' name='[Calculation_577586655452327936]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [LGA NAME (ABS)], [Offence Division]: SUM(IF YEAR([Calculation_786159670315520000]) = [Calculation_577586655453675521] THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [LGA NAME (ABS)] : MIN(IF YEAR([Calculation_786159670315520000]) = [Calculation_577586655453675521] THEN [lga_erp] END)}&#13;&#10;&#13;&#10;* 1000' />
+      </column>
+      <column caption='[cf] x-axis year' datatype='integer' name='[Calculation_577586655453675521]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;&#13;&#10;WHEN &quot;FY2013 &amp; FY2014&quot; THEN 2014&#13;&#10;WHEN &quot;FY2014 &amp; FY2015&quot; THEN 2015&#13;&#10;WHEN &quot;FY2015 &amp; FY2016&quot; THEN 2016&#13;&#10;WHEN &quot;FY2016 &amp; FY2017&quot; THEN 2017&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column caption='[cf] check which year lga rate is greater than' datatype='string' name='[Calculation_577586655455821826]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [Calculation_577586655452327936] &gt; [[cf]] lga crime rate x-axis (copy)] &#13;&#10;&#13;&#10;THEN &quot;LGA crime rate increased from previous fiscal year&quot;&#13;&#10;ELSE &quot;LGA crime rate decreased from previous fiscal year&quot;&#13;&#10;&#13;&#10;//THEN STR([[cf]] x-axis year]) +&quot; was greater than &quot;+ STR([[cf]] y-axis year])&#13;&#10;&#13;&#10;//ELSE STR([[cf]] y-axis year]) +&quot; was greater than &quot;+ STR([[cf]] x-axis year])&#13;&#10;&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column caption='[cf] x-axis label' datatype='string' name='[Calculation_577586655462043655]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='STR([Calculation_577586655453675521]) + &quot; LGA Crime Rate Per 1,000 erp&quot;' />
+      </column>
+      <column caption='[cf] string x-axis year' datatype='string' name='[Calculation_577586655463981064]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='STR([Calculation_577586655453675521])' />
+      </column>
+      <column caption='[cf] last year lga count' datatype='integer' name='[Calculation_577586655471829002]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNTD&#13;&#10;(&#13;&#10;    IF [Calculation_577586655455821826] = &apos;LGA crime rate increased from previous fiscal year&apos;&#13;&#10;//STR([[cf]] x-axis year]) +&quot; was greater than &quot;+ STR([[cf]] y-axis year])&#13;&#10;    THEN [LGA NAME (ABS)] &#13;&#10;    END&#13;&#10;)' />
+      </column>
+      <column caption='[cf] division equals choice' datatype='boolean' name='[Calculation_580964354855211008]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='[Parameters].[//offence count Parameter] = [Offence Division]' />
+      </column>
+      <column caption='[cf] 45degree trend' datatype='boolean' name='[Calculation_632192801633812482]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='[Calculation_577586655452327936] = [[cf]] lga crime rate x-axis (copy)]' />
+      </column>
+      <column caption='[cf] cumualtive growth' datatype='real' default-format='p0.00%' name='[Calculation_653584897051451392]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM(IF YEAR([Calculation_786159670315520000]) = 2017 THEN [Offence Count] END)/&#13;&#10;SUM(IF YEAR([Calculation_786159670315520000]) = 2013 THEN [Offence Count] END)-1' />
+      </column>
+      <column caption='//offence count' datatype='integer' name='[Calculation_690458118729113604]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([Offence Count])' />
+      </column>
+      <column caption='//col' datatype='real' name='[Calculation_715509392280248320]' role='measure' type='ordinal'>
+        <calculation class='tableau' formula='(index()-1)%(round(sqrt(size()))) //col formula'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='//row' datatype='integer' name='[Calculation_715509392280412161]' role='measure' type='ordinal'>
+        <calculation class='tableau' formula='int((index()-1)/(round(sqrt(size())))) //row formula'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Calculation2' datatype='string' name='[Calculation_715509392287305730]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF YEAR([Calculation_786159670315520000]) &gt;= 2015 THEN &quot;&gt;=2015&quot;&#13;&#10;&#13;&#10;ELSE &quot;&lt;2015&quot;&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column caption='[cf] % crimes against' datatype='real' name='[Calculation_736338541713068033]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_786159670315520000], [DHHS AREA]: SUM(IF [Offence Division] = &quot;A Crimes against the person&quot; THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [Calculation_786159670315520000],  [DHHS AREA]: SUM([Offence Count])}' />
+      </column>
+      <column caption='//sort case' datatype='real' name='[Calculation_736338541713842178]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[//offence count Parameter]&#13;&#10;&#13;&#10;WHEN &quot;A Crimes against the person&quot; THEN [Parameters].[Sort (Crime Division) (copy)]*[Calculation_736338541713068033]&#10;WHEN &apos;B Property and deception offences&apos; THEN [Parameters].[Sort (Crime Division) (copy)]*[[cf]] % Drug offences (copy)]&#13;&#10;WHEN &apos;C Drug offences&apos; THEN [Parameters].[Sort (Crime Division) (copy)]*[[cf]] % Deception Offences (copy)]&#10;WHEN &apos;D Public order and security offences&apos; THEN [Parameters].[Sort (Crime Division) (copy)]*[[cf]] % Drug offences (copy) (copy)]&#13;&#10;WHEN &apos;E Justice procedures offences&apos; THEN [Parameters].[Sort (Crime Division) (copy)]*[[cf]] % Drug offences (copy 2)] &#13;&#10;WHEN &apos;F Other offences&apos; THEN  [Parameters].[Sort (Crime Division) (copy)]*[[cf]] % Drug offences (copy 3)]&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column caption='Date' datatype='date' datatype-customized='true' name='[Calculation_786159670315520000]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='DATE(&quot;1/13/&quot; + STR([Year ending December]))' />
+      </column>
+      <column caption='[CF] MIN POPULATION' datatype='integer' name='[Calculation_786159670337761284]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_786159670315520000],[LGA NAME (ABS)]: MIN([lga_erp])}' />
+      </column>
+      <column caption='[CF] Crime Total' datatype='integer' name='[Calculation_786159670338445317]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_786159670315520000],[Offence Division],[LGA NAME (ABS)] : SUM([Offence Count])}' />
+      </column>
+      <column caption='Crime total rate per 1000' datatype='real' default-format='n#,##0;-#,##0' name='[Calculation_786159670338772998]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_786159670338445317]/[Calculation_786159670337761284] * 1000' />
+      </column>
+      <column aggregate-role-from='[LGA NAME (ABS)]' caption='DHHS Area' datatype='string' name='[DHHS AREA]' role='dimension' type='nominal' />
+      <column caption='Functional Economic Area' datatype='string' name='[FUNCTIONAL ECONOMIC AREA]' role='dimension' type='nominal' />
+      <column caption='Lga Code (Abs)' datatype='string' name='[LGA CODE (ABS)]' role='dimension' type='nominal' />
+      <column aggregate-role-from='[DHHS AREA]' caption='DHHS Division' datatype='string' name='[LGA DIVISION]' role='dimension' type='nominal' />
+      <column caption='Lga Name (Abs)' datatype='string' name='[LGA NAME (ABS)]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+      <column caption='Lga Name (Cp Database)' datatype='string' name='[LGA NAME (CP DATABASE)]' role='dimension' type='nominal' />
+      <column caption='Lga Name (Crime Stats Office)' datatype='string' name='[LGA NAME (CRIME STATS OFFICE)]' role='dimension' type='nominal' />
+      <column caption='Lga Type (Abs)' datatype='string' name='[LGA TYPE (ABS)]' role='dimension' type='nominal' />
+      <column caption='Lga Type' datatype='string' name='[LGA TYPE]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Local Government Area]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+      <column caption='Partnership Name' datatype='string' name='[PARTNERSHIP NAME]' role='dimension' type='nominal' />
+      <column caption='Region' datatype='string' name='[REGION]' role='dimension' type='nominal' />
+      <column caption='Section Of State' datatype='string' name='[SECTION OF STATE]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column aggregation='Sum' datatype='integer' name='[Year ending December]' role='dimension' type='ordinal' />
+      <column caption='[cf] % Drug offences' datatype='real' name='[[cf]] % Deception Offences (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_786159670315520000], [DHHS AREA]: SUM(IF [Offence Division] = &quot;C Drug offences&quot; THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [Calculation_786159670315520000],  [DHHS AREA]: SUM([Offence Count])}' />
+      </column>
+      <column caption='[cf] % Justice procedures offences' datatype='real' name='[[cf]] % Drug offences (copy 2)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_786159670315520000], [DHHS AREA]: SUM(IF [Offence Division] = &quot;E Justice procedures offences&quot; THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [Calculation_786159670315520000],  [DHHS AREA]: SUM([Offence Count])}' />
+      </column>
+      <column caption='[cf] % Other offences' datatype='real' name='[[cf]] % Drug offences (copy 3)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_786159670315520000], [DHHS AREA]: SUM(IF [Offence Division] = &quot;F Other offences&quot; THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [Calculation_786159670315520000],  [DHHS AREA]: SUM([Offence Count])}' />
+      </column>
+      <column caption='[cf] % Theft &amp; related' datatype='real' name='[[cf]] % Drug offences (copy 4)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_786159670315520000], [DHHS AREA]: SUM(IF [Offence Division] = &quot;Theft &amp; related&quot; THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [Calculation_786159670315520000],  [DHHS AREA]: SUM([Offence Count])}' />
+      </column>
+      <column caption='[cf] % Public order and security offences' datatype='real' name='[[cf]] % Drug offences (copy) (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_786159670315520000], [DHHS AREA]: SUM(IF [Offence Division] = &quot;D Public order and security offences&quot; THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [Calculation_786159670315520000],  [DHHS AREA]: SUM([Offence Count])}' />
+      </column>
+      <column caption='[cf] % Property offences' datatype='real' name='[[cf]] % Drug offences (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [Calculation_786159670315520000], [DHHS AREA]: SUM(IF [Offence Division] = &quot;B Property and deception offences&quot; THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [Calculation_786159670315520000],  [DHHS AREA]: SUM([Offence Count])}' />
+      </column>
+      <column caption='[cf] previous year lga count' datatype='integer' name='[[cf]] last year lga count (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNTD&#13;&#10;(&#13;&#10;    IF [Calculation_577586655455821826] = &apos;LGA crime rate decreased from previous fiscal year&apos;&#13;&#10;//STR([[cf]] y-axis year]) +&quot; was greater than &quot;+ STR([[cf]] x-axis year])&#13;&#10;    THEN [LGA NAME (ABS)] &#13;&#10;    END&#13;&#10;)' />
+      </column>
+      <column caption='[cf] previous year lga count perceent' datatype='real' default-format='p0.00%' name='[[cf]] last year lga count percent (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[[cf]] last year lga count (copy)]/([Calculation_577586655471829002] + [[cf]] last year lga count (copy)])' />
+      </column>
+      <column caption='[cf] lga crime rate y-axis' datatype='real' default-format='n#,##0.00;-#,##0.00' name='[[cf]] lga crime rate x-axis (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [LGA NAME (ABS)], [Offence Division]: SUM(IF YEAR([Calculation_786159670315520000]) = [[cf]] x-axis year (copy)] THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [LGA NAME (ABS)] : MIN(IF YEAR([Calculation_786159670315520000]) = [[cf]] x-axis year (copy)] THEN [lga_erp] END)}&#13;&#10;&#13;&#10;&#13;&#10;*1000' />
+      </column>
+      <column caption='[cf] string y-axis year' datatype='string' name='[[cf]] string x-axis year (copy)]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='STR([[cf]] x-axis year (copy)])' />
+      </column>
+      <column caption='[cf] y-axis label' datatype='string' name='[[cf]] x-axis label (copy)]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='STR([[cf]] x-axis year (copy)]) + &quot; LGA Crime Rate Per 1,000 erp&quot;' />
+      </column>
+      <column caption='[cf] y-axis year' datatype='integer' name='[[cf]] x-axis year (copy)]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;&#13;&#10;WHEN &quot;FY2013 &amp; FY2014&quot; THEN 2013&#13;&#10;WHEN &quot;FY2014 &amp; FY2015&quot; THEN 2014&#13;&#10;WHEN &quot;FY2015 &amp; FY2016&quot; THEN 2015&#13;&#10;WHEN &quot;FY2016 &amp; FY2017&quot; THEN 2016&#13;&#10;&#13;&#10;END' />
+      </column>
+      <column caption='Junction Key' datatype='integer' name='[junction_key]' role='dimension' type='ordinal' />
+      <column caption='Lga Code' datatype='integer' name='[lga_code]' role='dimension' type='ordinal' />
+      <column caption='Lga Erp1' datatype='integer' name='[lga_erp]' role='measure' type='quantitative' />
+      <column caption='Vic Erp' datatype='integer' name='[vic_erp]' role='measure' type='quantitative' />
+      <column-instance column='[Calculation_577586655455821826]' derivation='None' name='[none:Calculation_577586655455821826:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Calculation_580964354855211008]' derivation='None' name='[none:Calculation_580964354855211008:nk]' pivot='key' type='nominal' />
+      <column-instance column='[DHHS AREA]' derivation='None' name='[none:DHHS AREA:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Calculation_786159670315520000]' derivation='Year-Trunc' name='[tyr:Calculation_786159670315520000:ok]' pivot='key' type='ordinal' />
+      <group caption='Action (LGA_NAME16)' hidden='true' name='[Action (LGA_NAME16)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[LGA_NAME16]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (LGA_NAME16,Section Of State)' hidden='true' name='[Action (LGA_NAME16,Section Of State)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[LGA_NAME16]' />
+          <groupfilter function='level-members' level='[SECTION OF STATE]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (YEAR(Date),DHHS Area)' hidden='true' name='[Action (YEAR(Date),DHHS Area)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[tyr:Calculation_786159670315520000:ok]' />
+          <groupfilter function='level-members' level='[DHHS AREA]' />
+        </groupfilter>
+      </group>
+      <drill-paths>
+        <drill-path name='Section Of State, Lga Name (Abs)'>
+          <field>[SECTION OF STATE]</field>
+          <field>[LGA NAME (ABS)]</field>
+        </drill-path>
+      </drill-paths>
+      <extract count='-1' enabled='false' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='/Users/danielcorcoran/Desktop/Tableau (mac)/Tableau Public Projects/Crime/extract.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='06/03/2018 04:07:55 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='' increment-value='%null%' refresh-type='create' rows-inserted='52026' timestamp-start='2018-06-03 04:07:55.038' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>LGA CODE (ABS)</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[LGA CODE (ABS)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>LGA CODE (ABS)</remote-alias>
+              <ordinal>0</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>79</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>LGA NAME (CRIME STATS OFFICE)</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[LGA NAME (CRIME STATS OFFICE)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>LGA NAME (CRIME STATS OFFICE)</remote-alias>
+              <ordinal>1</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>79</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>LGA NAME (CP DATABASE)</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[LGA NAME (CP DATABASE)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>LGA NAME (CP DATABASE)</remote-alias>
+              <ordinal>2</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>79</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>LGA NAME (ABS)</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[LGA NAME (ABS)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>LGA NAME (ABS)</remote-alias>
+              <ordinal>3</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>79</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>REGION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[REGION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>REGION</remote-alias>
+              <ordinal>4</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>9</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>FUNCTIONAL ECONOMIC AREA</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[FUNCTIONAL ECONOMIC AREA]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>FUNCTIONAL ECONOMIC AREA</remote-alias>
+              <ordinal>5</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>38</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>LGA TYPE</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[LGA TYPE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>LGA TYPE</remote-alias>
+              <ordinal>6</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>PARTNERSHIP NAME</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[PARTNERSHIP NAME]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>PARTNERSHIP NAME</remote-alias>
+              <ordinal>7</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>15</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>SECTION OF STATE</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[SECTION OF STATE]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>SECTION OF STATE</remote-alias>
+              <ordinal>8</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>LGA TYPE (ABS)</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[LGA TYPE (ABS)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>LGA TYPE (ABS)</remote-alias>
+              <ordinal>9</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>LGA DIVISION</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[LGA DIVISION]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>LGA DIVISION</remote-alias>
+              <ordinal>10</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>DHHS AREA</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[DHHS AREA]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>DHHS AREA</remote-alias>
+              <ordinal>11</ordinal>
+              <family>cp_regions_new.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>17</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Year ending December</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Year ending December]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Year ending December</remote-alias>
+              <ordinal>12</ordinal>
+              <family>VIC_CRIME_2008-17</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Local Government Area</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Local Government Area]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Local Government Area</remote-alias>
+              <ordinal>13</ordinal>
+              <family>VIC_CRIME_2008-17</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>79</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RAU_S2' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Offence Division</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Offence Division]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Offence Division</remote-alias>
+              <ordinal>14</ordinal>
+              <family>VIC_CRIME_2008-17</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RAU_S2' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Offence Subdivision</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Offence Subdivision]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Offence Subdivision</remote-alias>
+              <ordinal>15</ordinal>
+              <family>VIC_CRIME_2008-17</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>27</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RAU_S2' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Offence Subgroup</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Offence Subgroup]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Offence Subgroup</remote-alias>
+              <ordinal>16</ordinal>
+              <family>VIC_CRIME_2008-17</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>96</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RAU_S2' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Offence Count</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Offence Count]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Offence Count</remote-alias>
+              <ordinal>17</ordinal>
+              <family>VIC_CRIME_2008-17</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>211</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Rate per 100,000 population</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Rate per 100,000 population]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Rate per 100,000 population</remote-alias>
+              <ordinal>18</ordinal>
+              <family>VIC_CRIME_2008-17</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>9032</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>lga_code</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[lga_code]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>lga_code</remote-alias>
+              <ordinal>19</ordinal>
+              <family>VIC_CRIME_2008-17</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>79</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>junction_key</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[junction_key]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>junction_key</remote-alias>
+              <ordinal>20</ordinal>
+              <family>VIC_CRIME_2008-17</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>336</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>vic_erp</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[vic_erp]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>vic_erp</remote-alias>
+              <ordinal>21</ordinal>
+              <family>VIC_CRIME_2008-17</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>lga_erp</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[lga_erp]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>lga_erp</remote-alias>
+              <ordinal>22</ordinal>
+              <family>VIC_CRIME_2008-17</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>335</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.522648' measure-ordering='alphabetic' measure-percentage='0.351916' parameter-percentage='0.125436' rowDisplayCount='999999' show-structure='true' user-set-layout='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Calculation_580964354855211008:nk]' type='palette'>
+            <map to='#00b2c9'>
+              <bucket>true</bucket>
+            </map>
+            <map to='#878887'>
+              <bucket>false</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:DHHS AREA:nk]' palette='blue_teal_10_0' type='palette'>
+            <map to='#2c5985'>
+              <bucket>&quot;Western Melbourne&quot;</bucket>
+            </map>
+            <map to='#2e618c'>
+              <bucket>&quot;Western District&quot;</bucket>
+            </map>
+            <map to='#306a93'>
+              <bucket>&quot;Southern Melbourne&quot;</bucket>
+            </map>
+            <map to='#327399'>
+              <bucket>&quot;Ovens Murray&quot;</bucket>
+            </map>
+            <map to='#347da0'>
+              <bucket>&quot;Outer Gippsland&quot;</bucket>
+            </map>
+            <map to='#3586a7'>
+              <bucket>&quot;Outer Eastern Melbourne&quot;</bucket>
+            </map>
+            <map to='#368fae'>
+              <bucket>&quot;North Eastern Melbourne&quot;</bucket>
+            </map>
+            <map to='#3d98b3'>
+              <bucket>&quot;Mallee&quot;</bucket>
+            </map>
+            <map to='#45a2b9'>
+              <bucket>&quot;Loddon&quot;</bucket>
+            </map>
+            <map to='#55aabd'>
+              <bucket>&quot;Inner Gippsland&quot;</bucket>
+            </map>
+            <map to='#65b3c2'>
+              <bucket>&quot;Inner Eastern Melbourne&quot;</bucket>
+            </map>
+            <map to='#73bbc6'>
+              <bucket>&quot;Hume Moreland&quot;</bucket>
+            </map>
+            <map to='#81c3cb'>
+              <bucket>&quot;Goulburn&quot;</bucket>
+            </map>
+            <map to='#8fcbce'>
+              <bucket>&quot;Central Highlands&quot;</bucket>
+            </map>
+            <map to='#9dd3d1'>
+              <bucket>&quot;Brimbank Melton&quot;</bucket>
+            </map>
+            <map to='#acdbd4'>
+              <bucket>&quot;Bayside Peninsula&quot;</bucket>
+            </map>
+            <map to='#bce4d8'>
+              <bucket>&quot;Barwon&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:Calculation_577586655455821826:nk]' type='palette'>
+            <map to='#119bda'>
+              <bucket>&quot;LGA crime rate increased from previous fiscal year&quot;</bucket>
+            </map>
+            <map to='#6a6a6a'>
+              <bucket>&quot;LGA crime rate decreased from previous fiscal year&quot;</bucket>
+            </map>
+            <map to='#717171'>
+              <bucket>&quot;2014 was greater than 2013&quot;</bucket>
+            </map>
+            <map to='#717171'>
+              <bucket>&quot;2014 was greater than 2015&quot;</bucket>
+            </map>
+            <map to='#717171'>
+              <bucket>&quot;2015 was greater than 2016&quot;</bucket>
+            </map>
+            <map to='#717171'>
+              <bucket>&quot;2016 was greater than 2017&quot;</bucket>
+            </map>
+            <map to='#e16e0d'>
+              <bucket>&quot;2013 was greater than 2014&quot;</bucket>
+            </map>
+            <map to='#e16e0d'>
+              <bucket>&quot;2015 was greater than 2014&quot;</bucket>
+            </map>
+            <map to='#e16e0d'>
+              <bucket>&quot;2016 was greater than 2015&quot;</bucket>
+            </map>
+            <map to='#e16e0d'>
+              <bucket>&quot;2017 was greater than 2016&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Australia&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Sort (Crime Division)' datatype='string' name='[//offence count Parameter]' param-domain-type='list' role='measure' type='nominal' value='&quot;E Justice procedures offences&quot;'>
+          <calculation class='tableau' formula='&quot;E Justice procedures offences&quot;' />
+        </column>
+        <column caption='Compare Lga Crime Rate' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;FY2016 &amp; FY2017&quot;'>
+          <calculation class='tableau' formula='&quot;FY2016 &amp; FY2017&quot;' />
+          <aliases>
+            <alias key='&quot;FY2015 &amp; FY2016&quot;' value='FY2015 &amp; FY2016' />
+          </aliases>
+        </column>
+        <column alias='Descending' caption='Sort (Order)' datatype='integer' name='[Sort (Crime Division) (copy)]' param-domain-type='list' role='measure' type='quantitative' value='-1'>
+          <calculation class='tableau' formula='-1' />
+          <aliases>
+            <alias key='-1' value='Descending' />
+            <alias key='1' value='Ascending' />
+          </aliases>
+        </column>
+        <column caption='Choose a metric' datatype='string' name='[Sort (Order) (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;Counts as \% of Year&quot;'>
+          <calculation class='tableau' formula='&quot;Counts as % of Year&quot;' />
+        </column>
+      </datasource-dependencies>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='LGAs Decrease'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Extract+ (Multiple Connections)' name='federated.0ii8qw81w8uhqg12qhffa0aqxsn2' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Compare Lga Crime Rate' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;FY2016 &amp; FY2017&quot;'>
+              <calculation class='tableau' formula='&quot;FY2016 &amp; FY2017&quot;' />
+              <aliases>
+                <alias key='&quot;FY2015 &amp; FY2016&quot;' value='FY2015 &amp; FY2016' />
+              </aliases>
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0ii8qw81w8uhqg12qhffa0aqxsn2'>
+            <column caption='[cf] lga crime rate x-axis' datatype='real' default-format='n#,##0.00;-#,##0.00' name='[Calculation_577586655452327936]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [LGA NAME (ABS)], [Offence Division]: SUM(IF YEAR([Calculation_786159670315520000]) = [Calculation_577586655453675521] THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [LGA NAME (ABS)] : MIN(IF YEAR([Calculation_786159670315520000]) = [Calculation_577586655453675521] THEN [lga_erp] END)}&#13;&#10;&#13;&#10;* 1000' />
+            </column>
+            <column caption='[cf] x-axis year' datatype='integer' name='[Calculation_577586655453675521]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;&#13;&#10;WHEN &quot;FY2013 &amp; FY2014&quot; THEN 2014&#13;&#10;WHEN &quot;FY2014 &amp; FY2015&quot; THEN 2015&#13;&#10;WHEN &quot;FY2015 &amp; FY2016&quot; THEN 2016&#13;&#10;WHEN &quot;FY2016 &amp; FY2017&quot; THEN 2017&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='[cf] check which year lga rate is greater than' datatype='string' name='[Calculation_577586655455821826]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_577586655452327936] &gt; [[cf]] lga crime rate x-axis (copy)] &#13;&#10;&#13;&#10;THEN &quot;LGA crime rate increased from previous fiscal year&quot;&#13;&#10;ELSE &quot;LGA crime rate decreased from previous fiscal year&quot;&#13;&#10;&#13;&#10;//THEN STR([[cf]] x-axis year]) +&quot; was greater than &quot;+ STR([[cf]] y-axis year])&#13;&#10;&#13;&#10;//ELSE STR([[cf]] y-axis year]) +&quot; was greater than &quot;+ STR([[cf]] x-axis year])&#13;&#10;&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='[cf] x-axis label' datatype='string' name='[Calculation_577586655462043655]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR([Calculation_577586655453675521]) + &quot; LGA Crime Rate Per 1,000 erp&quot;' />
+            </column>
+            <column caption='[cf] last year lga count' datatype='integer' name='[Calculation_577586655471829002]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD&#13;&#10;(&#13;&#10;    IF [Calculation_577586655455821826] = &apos;LGA crime rate increased from previous fiscal year&apos;&#13;&#10;//STR([[cf]] x-axis year]) +&quot; was greater than &quot;+ STR([[cf]] y-axis year])&#13;&#10;    THEN [LGA NAME (ABS)] &#13;&#10;    END&#13;&#10;)' />
+            </column>
+            <column caption='LEFT([[cf]] x-axis label],4)' datatype='string' name='[Calculation_632192801628803073]' role='dimension' type='nominal' user:unnamed='LGAs Decrease'>
+              <calculation class='tableau' formula='LEFT([Calculation_577586655462043655],4)' />
+            </column>
+            <column caption='Date' datatype='date' datatype-customized='true' name='[Calculation_786159670315520000]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(&quot;1/13/&quot; + STR([Year ending December]))' />
+            </column>
+            <column caption='Lga Name (Abs)' datatype='string' name='[LGA NAME (ABS)]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+            <column datatype='integer' name='[Offence Count]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Offence Division]' role='dimension' type='nominal' />
+            <column aggregation='Sum' datatype='integer' name='[Year ending December]' role='dimension' type='ordinal' />
+            <column caption='[cf] previous year lga count' datatype='integer' name='[[cf]] last year lga count (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD&#13;&#10;(&#13;&#10;    IF [Calculation_577586655455821826] = &apos;LGA crime rate decreased from previous fiscal year&apos;&#13;&#10;//STR([[cf]] y-axis year]) +&quot; was greater than &quot;+ STR([[cf]] x-axis year])&#13;&#10;    THEN [LGA NAME (ABS)] &#13;&#10;    END&#13;&#10;)' />
+            </column>
+            <column caption='[cf] previous year lga count perceent' datatype='real' default-format='p0.00%' name='[[cf]] last year lga count percent (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[[cf]] last year lga count (copy)]/([Calculation_577586655471829002] + [[cf]] last year lga count (copy)])' />
+            </column>
+            <column caption='[cf] lga crime rate y-axis' datatype='real' default-format='n#,##0.00;-#,##0.00' name='[[cf]] lga crime rate x-axis (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [LGA NAME (ABS)], [Offence Division]: SUM(IF YEAR([Calculation_786159670315520000]) = [[cf]] x-axis year (copy)] THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [LGA NAME (ABS)] : MIN(IF YEAR([Calculation_786159670315520000]) = [[cf]] x-axis year (copy)] THEN [lga_erp] END)}&#13;&#10;&#13;&#10;&#13;&#10;*1000' />
+            </column>
+            <column caption='[cf] y-axis year' datatype='integer' name='[[cf]] x-axis year (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;&#13;&#10;WHEN &quot;FY2013 &amp; FY2014&quot; THEN 2013&#13;&#10;WHEN &quot;FY2014 &amp; FY2015&quot; THEN 2014&#13;&#10;WHEN &quot;FY2015 &amp; FY2016&quot; THEN 2015&#13;&#10;WHEN &quot;FY2016 &amp; FY2017&quot; THEN 2016&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='Lga Erp1' datatype='integer' name='[lga_erp]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_632192801628803073]' derivation='None' name='[none:Calculation_632192801628803073:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Offence Division]' derivation='None' name='[none:Offence Division:nk]' pivot='key' type='nominal' />
+            <column-instance column='[[cf]] last year lga count (copy)]' derivation='User' name='[usr:[cf]] last year lga count (copy):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[[cf]] last year lga count percent (copy)]' derivation='User' name='[usr:[cf]] last year lga count percent (copy):qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]' filter-group='6'>
+            <groupfilter function='member' level='[none:Offence Division:nk]' member='&quot;A Crimes against the person&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='958' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[usr:[cf]] last year lga count (copy):qk]' />
+              <text column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[usr:[cf]] last year lga count percent (copy):qk]' />
+              <text column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_632192801628803073:nk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run bold='true' fontcolor='#555555' fontsize='35'>▼&lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[usr:[cf]] last year lga count (copy):qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run bold='true' fontcolor='#898989' fontsize='20'>(&lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[usr:[cf]] last year lga count percent (copy):qk]&gt;)</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#2ba1c3' fontsize='10'>LGAs showed a decrease in the crime rate per 1,000 erp during </run>
+                <run bold='true' fontcolor='#2ba1c3' fontsize='10'>&lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_632192801628803073:nk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+    </worksheet>
+    <worksheet name='LGAs Increase'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Extract+ (Multiple Connections)' name='federated.0ii8qw81w8uhqg12qhffa0aqxsn2' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Compare Lga Crime Rate' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;FY2016 &amp; FY2017&quot;'>
+              <calculation class='tableau' formula='&quot;FY2016 &amp; FY2017&quot;' />
+              <aliases>
+                <alias key='&quot;FY2015 &amp; FY2016&quot;' value='FY2015 &amp; FY2016' />
+              </aliases>
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0ii8qw81w8uhqg12qhffa0aqxsn2'>
+            <column caption='[cf] last year lga count percent' datatype='real' default-format='p0.00%' name='[Calculation_322570326621573120]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Calculation_577586655471829002]/([Calculation_577586655471829002] + [[cf]] last year lga count (copy)])' />
+            </column>
+            <column caption='[cf] lga crime rate x-axis' datatype='real' default-format='n#,##0.00;-#,##0.00' name='[Calculation_577586655452327936]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [LGA NAME (ABS)], [Offence Division]: SUM(IF YEAR([Calculation_786159670315520000]) = [Calculation_577586655453675521] THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [LGA NAME (ABS)] : MIN(IF YEAR([Calculation_786159670315520000]) = [Calculation_577586655453675521] THEN [lga_erp] END)}&#13;&#10;&#13;&#10;* 1000' />
+            </column>
+            <column caption='[cf] x-axis year' datatype='integer' name='[Calculation_577586655453675521]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;&#13;&#10;WHEN &quot;FY2013 &amp; FY2014&quot; THEN 2014&#13;&#10;WHEN &quot;FY2014 &amp; FY2015&quot; THEN 2015&#13;&#10;WHEN &quot;FY2015 &amp; FY2016&quot; THEN 2016&#13;&#10;WHEN &quot;FY2016 &amp; FY2017&quot; THEN 2017&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='[cf] check which year lga rate is greater than' datatype='string' name='[Calculation_577586655455821826]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_577586655452327936] &gt; [[cf]] lga crime rate x-axis (copy)] &#13;&#10;&#13;&#10;THEN &quot;LGA crime rate increased from previous fiscal year&quot;&#13;&#10;ELSE &quot;LGA crime rate decreased from previous fiscal year&quot;&#13;&#10;&#13;&#10;//THEN STR([[cf]] x-axis year]) +&quot; was greater than &quot;+ STR([[cf]] y-axis year])&#13;&#10;&#13;&#10;//ELSE STR([[cf]] y-axis year]) +&quot; was greater than &quot;+ STR([[cf]] x-axis year])&#13;&#10;&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='[cf] x-axis label' datatype='string' name='[Calculation_577586655462043655]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR([Calculation_577586655453675521]) + &quot; LGA Crime Rate Per 1,000 erp&quot;' />
+            </column>
+            <column caption='[cf] last year lga count' datatype='integer' name='[Calculation_577586655471829002]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD&#13;&#10;(&#13;&#10;    IF [Calculation_577586655455821826] = &apos;LGA crime rate increased from previous fiscal year&apos;&#13;&#10;//STR([[cf]] x-axis year]) +&quot; was greater than &quot;+ STR([[cf]] y-axis year])&#13;&#10;    THEN [LGA NAME (ABS)] &#13;&#10;    END&#13;&#10;)' />
+            </column>
+            <column caption='LEFT([[cf]] x-axis label],4)' datatype='string' name='[Calculation_632192801627811840]' role='dimension' type='nominal' user:unnamed='LGAs Increase'>
+              <calculation class='tableau' formula='LEFT([Calculation_577586655462043655],4)' />
+            </column>
+            <column caption='Date' datatype='date' datatype-customized='true' name='[Calculation_786159670315520000]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(&quot;1/13/&quot; + STR([Year ending December]))' />
+            </column>
+            <column caption='Lga Name (Abs)' datatype='string' name='[LGA NAME (ABS)]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+            <column datatype='integer' name='[Offence Count]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Offence Division]' role='dimension' type='nominal' />
+            <column aggregation='Sum' datatype='integer' name='[Year ending December]' role='dimension' type='ordinal' />
+            <column caption='[cf] previous year lga count' datatype='integer' name='[[cf]] last year lga count (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD&#13;&#10;(&#13;&#10;    IF [Calculation_577586655455821826] = &apos;LGA crime rate decreased from previous fiscal year&apos;&#13;&#10;//STR([[cf]] y-axis year]) +&quot; was greater than &quot;+ STR([[cf]] x-axis year])&#13;&#10;    THEN [LGA NAME (ABS)] &#13;&#10;    END&#13;&#10;)' />
+            </column>
+            <column caption='[cf] lga crime rate y-axis' datatype='real' default-format='n#,##0.00;-#,##0.00' name='[[cf]] lga crime rate x-axis (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [LGA NAME (ABS)], [Offence Division]: SUM(IF YEAR([Calculation_786159670315520000]) = [[cf]] x-axis year (copy)] THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [LGA NAME (ABS)] : MIN(IF YEAR([Calculation_786159670315520000]) = [[cf]] x-axis year (copy)] THEN [lga_erp] END)}&#13;&#10;&#13;&#10;&#13;&#10;*1000' />
+            </column>
+            <column caption='[cf] y-axis year' datatype='integer' name='[[cf]] x-axis year (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;&#13;&#10;WHEN &quot;FY2013 &amp; FY2014&quot; THEN 2013&#13;&#10;WHEN &quot;FY2014 &amp; FY2015&quot; THEN 2014&#13;&#10;WHEN &quot;FY2015 &amp; FY2016&quot; THEN 2015&#13;&#10;WHEN &quot;FY2016 &amp; FY2017&quot; THEN 2016&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='Lga Erp1' datatype='integer' name='[lga_erp]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_632192801627811840]' derivation='None' name='[none:Calculation_632192801627811840:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Offence Division]' derivation='None' name='[none:Offence Division:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_322570326621573120]' derivation='User' name='[usr:Calculation_322570326621573120:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_577586655471829002]' derivation='User' name='[usr:Calculation_577586655471829002:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]' filter-group='6'>
+            <groupfilter function='member' level='[none:Offence Division:nk]' member='&quot;A Crimes against the person&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='color' value='#e36d0b' />
+            <format attr='width' value='839' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[usr:Calculation_577586655471829002:qk]' />
+              <text column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[usr:Calculation_322570326621573120:qk]' />
+              <text column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_632192801627811840:nk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run bold='true' fontcolor='#555555' fontsize='25'>▲</run>
+                <run bold='true' fontcolor='#555555' fontsize='35'>&lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[usr:Calculation_577586655471829002:qk]&gt;</run>
+                <run>Æ&#10;</run>
+                <run bold='true' fontcolor='#898989' fontsize='20'>(&lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[usr:Calculation_322570326621573120:qk]&gt;)</run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#2ba1c3' fontsize='10'>LGAs showed an increase in the crime rate per 1,000 erp during </run>
+                <run bold='true' fontcolor='#2ba1c3' fontsize='10'>&lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_632192801627811840:nk]&gt;</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-align' value='center' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+    </worksheet>
+    <worksheet name='X-axis label'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Extract+ (Multiple Connections)' name='federated.0ii8qw81w8uhqg12qhffa0aqxsn2' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Compare Lga Crime Rate' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;FY2016 &amp; FY2017&quot;'>
+              <calculation class='tableau' formula='&quot;FY2016 &amp; FY2017&quot;' />
+              <aliases>
+                <alias key='&quot;FY2015 &amp; FY2016&quot;' value='FY2015 &amp; FY2016' />
+              </aliases>
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0ii8qw81w8uhqg12qhffa0aqxsn2'>
+            <column caption='[cf] x-axis year' datatype='integer' name='[Calculation_577586655453675521]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;&#13;&#10;WHEN &quot;FY2013 &amp; FY2014&quot; THEN 2014&#13;&#10;WHEN &quot;FY2014 &amp; FY2015&quot; THEN 2015&#13;&#10;WHEN &quot;FY2015 &amp; FY2016&quot; THEN 2016&#13;&#10;WHEN &quot;FY2016 &amp; FY2017&quot; THEN 2017&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='[cf] x-axis label' datatype='string' name='[Calculation_577586655462043655]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR([Calculation_577586655453675521]) + &quot; LGA Crime Rate Per 1,000 erp&quot;' />
+            </column>
+            <column datatype='string' name='[Offence Division]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_577586655462043655]' derivation='None' name='[none:Calculation_577586655462043655:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Offence Division]' derivation='None' name='[none:Offence Division:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]' filter-group='6'>
+            <groupfilter function='member' level='[none:Offence Division:nk]' member='&quot;A Crimes against the person&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='182' />
+            <format attr='color' value='#898989' />
+            <format attr='font-size' value='9' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655462043655:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+    </worksheet>
+    <worksheet name='Y-axis label'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Extract+ (Multiple Connections)' name='federated.0ii8qw81w8uhqg12qhffa0aqxsn2' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Compare Lga Crime Rate' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;FY2016 &amp; FY2017&quot;'>
+              <calculation class='tableau' formula='&quot;FY2016 &amp; FY2017&quot;' />
+              <aliases>
+                <alias key='&quot;FY2015 &amp; FY2016&quot;' value='FY2015 &amp; FY2016' />
+              </aliases>
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0ii8qw81w8uhqg12qhffa0aqxsn2'>
+            <column datatype='string' name='[Offence Division]' role='dimension' type='nominal' />
+            <column caption='[cf] y-axis label' datatype='string' name='[[cf]] x-axis label (copy)]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR([[cf]] x-axis year (copy)]) + &quot; LGA Crime Rate Per 1,000 erp&quot;' />
+            </column>
+            <column caption='[cf] y-axis year' datatype='integer' name='[[cf]] x-axis year (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;&#13;&#10;WHEN &quot;FY2013 &amp; FY2014&quot; THEN 2013&#13;&#10;WHEN &quot;FY2014 &amp; FY2015&quot; THEN 2014&#13;&#10;WHEN &quot;FY2015 &amp; FY2016&quot; THEN 2015&#13;&#10;WHEN &quot;FY2016 &amp; FY2017&quot; THEN 2016&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column-instance column='[Offence Division]' derivation='None' name='[none:Offence Division:nk]' pivot='key' type='nominal' />
+            <column-instance column='[[cf]] x-axis label (copy)]' derivation='None' name='[none:[cf]] x-axis label (copy):nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]' filter-group='6'>
+            <groupfilter function='member' level='[none:Offence Division:nk]' member='&quot;A Crimes against the person&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='height' value='189' />
+            <format attr='color' value='#898989' />
+            <format attr='font-size' value='9' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:[cf]] x-axis label (copy):nk]' />
+            </encodings>
+            <style>
+              <style-rule element='cell'>
+                <format attr='text-orientation' value='-90' />
+              </style-rule>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minheight' value='-1' />
+                <format attr='maxheight' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+    </worksheet>
+    <worksheet name='Year on Year comparison'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+        <caption>
+          <formatted-text />
+        </caption>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Extract+ (Multiple Connections)' name='federated.0ii8qw81w8uhqg12qhffa0aqxsn2' />
+            <datasource name='Parameters' />
+          </datasources>
+          <datasource-dependencies datasource='Parameters'>
+            <column caption='Compare Lga Crime Rate' datatype='string' name='[Parameter 1]' param-domain-type='list' role='measure' type='nominal' value='&quot;FY2016 &amp; FY2017&quot;'>
+              <calculation class='tableau' formula='&quot;FY2016 &amp; FY2017&quot;' />
+              <aliases>
+                <alias key='&quot;FY2015 &amp; FY2016&quot;' value='FY2015 &amp; FY2016' />
+              </aliases>
+            </column>
+          </datasource-dependencies>
+          <datasource-dependencies datasource='federated.0ii8qw81w8uhqg12qhffa0aqxsn2'>
+            <column caption='[cf] lga crime rate x-axis' datatype='real' default-format='n#,##0.00;-#,##0.00' name='[Calculation_577586655452327936]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [LGA NAME (ABS)], [Offence Division]: SUM(IF YEAR([Calculation_786159670315520000]) = [Calculation_577586655453675521] THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [LGA NAME (ABS)] : MIN(IF YEAR([Calculation_786159670315520000]) = [Calculation_577586655453675521] THEN [lga_erp] END)}&#13;&#10;&#13;&#10;* 1000' />
+            </column>
+            <column caption='[cf] x-axis year' datatype='integer' name='[Calculation_577586655453675521]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;&#13;&#10;WHEN &quot;FY2013 &amp; FY2014&quot; THEN 2014&#13;&#10;WHEN &quot;FY2014 &amp; FY2015&quot; THEN 2015&#13;&#10;WHEN &quot;FY2015 &amp; FY2016&quot; THEN 2016&#13;&#10;WHEN &quot;FY2016 &amp; FY2017&quot; THEN 2017&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='[cf] check which year lga rate is greater than' datatype='string' name='[Calculation_577586655455821826]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF [Calculation_577586655452327936] &gt; [[cf]] lga crime rate x-axis (copy)] &#13;&#10;&#13;&#10;THEN &quot;LGA crime rate increased from previous fiscal year&quot;&#13;&#10;ELSE &quot;LGA crime rate decreased from previous fiscal year&quot;&#13;&#10;&#13;&#10;//THEN STR([[cf]] x-axis year]) +&quot; was greater than &quot;+ STR([[cf]] y-axis year])&#13;&#10;&#13;&#10;//ELSE STR([[cf]] y-axis year]) +&quot; was greater than &quot;+ STR([[cf]] x-axis year])&#13;&#10;&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='[cf] string x-axis year' datatype='string' name='[Calculation_577586655463981064]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR([Calculation_577586655453675521])' />
+            </column>
+            <column caption='Date' datatype='date' datatype-customized='true' name='[Calculation_786159670315520000]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='DATE(&quot;1/13/&quot; + STR([Year ending December]))' />
+            </column>
+            <column caption='Lga Name (Abs)' datatype='string' name='[LGA NAME (ABS)]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+            <column datatype='integer' name='[Offence Count]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Offence Division]' role='dimension' type='nominal' />
+            <column aggregation='Sum' datatype='integer' name='[Year ending December]' role='dimension' type='ordinal' />
+            <column caption='[cf] lga crime rate y-axis' datatype='real' default-format='n#,##0.00;-#,##0.00' name='[[cf]] lga crime rate x-axis (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [LGA NAME (ABS)], [Offence Division]: SUM(IF YEAR([Calculation_786159670315520000]) = [[cf]] x-axis year (copy)] THEN [Offence Count] END)}&#13;&#10;/&#13;&#10;{FIXED [LGA NAME (ABS)] : MIN(IF YEAR([Calculation_786159670315520000]) = [[cf]] x-axis year (copy)] THEN [lga_erp] END)}&#13;&#10;&#13;&#10;&#13;&#10;*1000' />
+            </column>
+            <column caption='[cf] string y-axis year' datatype='string' name='[[cf]] string x-axis year (copy)]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='STR([[cf]] x-axis year (copy)])' />
+            </column>
+            <column caption='[cf] y-axis year' datatype='integer' name='[[cf]] x-axis year (copy)]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='CASE [Parameters].[Parameter 1]&#13;&#10;&#13;&#10;WHEN &quot;FY2013 &amp; FY2014&quot; THEN 2013&#13;&#10;WHEN &quot;FY2014 &amp; FY2015&quot; THEN 2014&#13;&#10;WHEN &quot;FY2015 &amp; FY2016&quot; THEN 2015&#13;&#10;WHEN &quot;FY2016 &amp; FY2017&quot; THEN 2016&#13;&#10;&#13;&#10;END' />
+            </column>
+            <column caption='Lga Erp1' datatype='integer' name='[lga_erp]' role='measure' type='quantitative' />
+            <column-instance column='[Calculation_577586655452327936]' derivation='Min' name='[min:Calculation_577586655452327936:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[[cf]] lga crime rate x-axis (copy)]' derivation='Min' name='[min:[cf]] lga crime rate x-axis (copy):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_577586655455821826]' derivation='None' name='[none:Calculation_577586655455821826:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_577586655463981064]' derivation='None' name='[none:Calculation_577586655463981064:nk]' pivot='key' type='nominal' />
+            <column-instance column='[LGA NAME (ABS)]' derivation='None' name='[none:LGA NAME (ABS):nk]' pivot='key' type='nominal' />
+            <column-instance column='[Offence Division]' derivation='None' name='[none:Offence Division:nk]' pivot='key' type='nominal' />
+            <column-instance column='[[cf]] string x-axis year (copy)]' derivation='None' name='[none:[cf]] string x-axis year (copy):nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <sort class='manual' column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655455821826:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;2016 was greater than 2015&quot;</bucket>
+              <bucket>&quot;2015 was greater than 2016&quot;</bucket>
+              <bucket>%all%</bucket>
+            </dictionary>
+          </sort>
+          <filter class='categorical' column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]' filter-group='6'>
+            <groupfilter function='member' level='[none:Offence Division:nk]' member='&quot;A Crimes against the person&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='subtitle' class='0' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:[cf]] lga crime rate x-axis (copy):qk]' scope='rows' value='' />
+            <format attr='auto-subtitle' class='0' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:[cf]] lga crime rate x-axis (copy):qk]' scope='rows' value='true' />
+            <format attr='subtitle' class='0' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:Calculation_577586655452327936:qk]' scope='cols' value='' />
+            <format attr='auto-subtitle' class='0' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:Calculation_577586655452327936:qk]' scope='cols' value='true' />
+            <format attr='title' class='0' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:Calculation_577586655452327936:qk]' scope='cols' value='' />
+            <format attr='title' class='0' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:[cf]] lga crime rate x-axis (copy):qk]' scope='rows' value='' />
+            <encoding attr='space' class='0' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:Calculation_577586655452327936:qk]' field-type='quantitative' major-origin='0.0' major-spacing='5.0' minor-show='false' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:[cf]] lga crime rate x-axis (copy):qk]' field-type='quantitative' major-origin='0.0' major-spacing='5.0' scope='rows' type='space' />
+            <format attr='stroke-color' value='#898989' />
+            <format attr='stroke-size' value='2' />
+            <format attr='tick-color' value='#898989' />
+            <format attr='stroke-size' scope='rows' value='2' />
+            <format attr='stroke-size' scope='cols' value='1' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:[cf]] lga crime rate x-axis (copy):qk]' value='N' />
+            <format attr='text-format' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:Calculation_577586655452327936:qk]' value='N' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-style' data-class='total' scope='rows' value='none' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='show-null-value-warning' value='false' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='line-visibility' value='on' />
+            <format attr='line-pattern-only' value='dashed' />
+            <format attr='stroke-size' value='1' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='legend'>
+            <format attr='col-width' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655455821826:nk]' value='360' />
+            <format attr='border-width' value='2' />
+            <format attr='border-color' value='#f5f5f5' />
+            <format attr='border-style' value='none' />
+            <format attr='font-size' value='8' />
+            <format attr='color' value='#555555' />
+          </style-rule>
+          <style-rule element='legend-title'>
+            <format attr='font-size' value='8' />
+            <format attr='color' value='#666666' />
+          </style-rule>
+          <style-rule element='legend-title-text'>
+            <format attr='color' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655455821826:nk]' value='&#10;' />
+          </style-rule>
+          <style-rule element='quick-filter'>
+            <format attr='title' field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]' value='Choose CSA Offence Division:'>
+              <formatted-text>
+                <run bold='false' fontcolor='#2ba1c3'>Choose CSA Offence Division:</run>
+              </formatted-text>
+            </format>
+            <format attr='color' value='#555555' />
+            <format attr='font-weight' value='bold' />
+            <format attr='font-size' value='8' />
+          </style-rule>
+          <style-rule element='quick-filter-title'>
+            <format attr='color' value='#e36d0b' />
+            <format attr='font-weight' value='bold' />
+            <format attr='font-size' value='10' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655455821826:nk]' />
+              <text column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:LGA NAME (ABS):nk]' />
+              <lod column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:LGA NAME (ABS):nk]' />
+              <lod column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655463981064:nk]' />
+              <lod column='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:[cf]] string x-axis year (copy):nk]' />
+            </encodings>
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+            <customized-tooltip>
+              <formatted-text>
+                <run fontalignment='1' fontcolor='#555555' fontsize='16'>&lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:LGA NAME (ABS):nk]&gt;</run>
+                <run fontalignment='1'>Æ&#10;&#10;</run>
+                <run fontalignment='1' fontcolor='#2ba1c3'>&lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:[cf]] string x-axis year (copy):nk]&gt;</run>
+                <run fontalignment='1' fontcolor='#898989'>: &lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:[cf]] lga crime rate x-axis (copy):qk]&gt; per 1,000 erp</run>
+                <run fontalignment='1'>Æ&#10;</run>
+                <run fontalignment='1' fontcolor='#2ba1c3'>&lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655463981064:nk]&gt;</run>
+                <run fontalignment='1' fontcolor='#898989'>: &lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:Calculation_577586655452327936:qk]&gt; per 1,000 erp</run>
+                <run fontalignment='1'>Æ&#10;&#10;</run>
+                <run fontalignment='1' fontcolor='#2ba1c3' italic='true'>&lt;[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655455821826:nk]&gt;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.1534254550933838' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-color' value='#e36d0b' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#555555' />
+                <format attr='mark-transparency' value='198' />
+              </style-rule>
+              <style-rule element='trendline'>
+                <format attr='line-visibility' value='off' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:[cf]] lga crime rate x-axis (copy):qk]</rows>
+        <cols>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[min:Calculation_577586655452327936:qk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='LGA Crime Rate Comparison Dashboard'>
+      <repository-location id='LGACrimeRateComparisonDashboard' path='/t/childprotection/workbooks/CrimeStats13-17' revision='' site='childprotection' />
+      <style>
+        <style-rule element='parameter-ctrl'>
+          <format attr='color' value='#555555' />
+          <format attr='font-size' value='8' />
+          <format attr='font-weight' value='bold' />
+        </style-rule>
+      </style>
+      <size maxheight='827' maxwidth='1169' minheight='827' minwidth='1169' preset-index='15' sizing-mode='fixed' />
+      <datasources>
+        <datasource caption='Extract+ (Multiple Connections)' name='federated.0ii8qw81w8uhqg12qhffa0aqxsn2' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0ii8qw81w8uhqg12qhffa0aqxsn2'>
+        <column datatype='string' name='[Offence Division]' role='dimension' type='nominal' />
+        <column-instance column='[Offence Division]' derivation='None' name='[none:Offence Division:nk]' pivot='key' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='74607' id='1' name='Year on Year comparison' show-caption='true' w='59196' x='5133' y='10036' />
+        <zone h='20193' id='5' param='vert' type='layout-flow' w='32934' x='66039' y='2781'>
+          <zone custom-title='true' h='5804' id='4' mode='compact' param='[Parameters].[Parameter 1]' type='paramctrl' w='32934' x='66039' y='2781'>
+            <formatted-text>
+              <run bold='false' fontcolor='#2ba1c3' fontsize='10'>Choose Fiscal Year comparison:</run>
+            </formatted-text>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone h='5804' id='9' mode='dropdown' name='Year on Year comparison' param='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Offence Division:nk]' show-all='false' type='filter' w='32934' x='66039' y='8585'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+        </zone>
+        <zone h='6409' id='3' name='Year on Year comparison' pane-specification-id='0' param='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655455821826:nk]' type='color' w='64157' x='2908' y='91173' />
+        <zone h='4837' id='6' name='X-axis label' w='26604' x='21471' y='83676' />
+        <zone h='38694' id='7' name='Y-axis label' w='3422' x='1198' y='29141' />
+        <zone forceUpdate='true' h='9311' id='8' type='text' w='54149' x='1454' y='1330'>
+          <formatted-text>
+            <run fontcolor='#2ba1c3' fontsize='24'>Crime Rate Comparison</run>
+          </formatted-text>
+        </zone>
+        <zone h='71826' id='12' param='vert' type='layout-flow' w='30881' x='67066' y='20556'>
+          <zone fixed-size='240' h='29988' id='11' is-fixed='true' name='LGAs Increase' w='30881' x='67066' y='20556'>
+            <layout-cache type-h='cell' type-w='fixed' />
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone fixed-size='217' h='27206' id='10' is-fixed='true' name='LGAs Decrease' w='30881' x='67066' y='50544'>
+            <layout-cache type-h='cell' type-w='fixed' />
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='dashboard' maximized='true' name='LGA Crime Rate Comparison Dashboard' tab-color='#6e597f'>
+      <viewpoints>
+        <viewpoint name='LGAs Decrease'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='LGAs Increase'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='X-axis label'>
+          <zoom type='entire-view' />
+          <selection-collection>
+            <tuple-selection>
+              <tuple-reference>
+                <tuple-descriptor>
+                  <pane-descriptor>
+                    <x-fields />
+                    <y-fields />
+                  </pane-descriptor>
+                  <columns>
+                    <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655462043655:nk]</field>
+                  </columns>
+                </tuple-descriptor>
+                <tuple>
+                  <value>&quot;2014 LGA Crime Rate Per 1,000 erp&quot;</value>
+                </tuple>
+              </tuple-reference>
+            </tuple-selection>
+          </selection-collection>
+        </viewpoint>
+        <viewpoint name='Y-axis label'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Year on Year comparison'>
+          <zoom type='entire-view' />
+          <highlight field='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655455821826:nk]'>
+            <bucket-selection />
+          </highlight>
+        </viewpoint>
+      </viewpoints>
+      <active id='10' />
+    </window>
+    <window class='worksheet' hidden='true' name='LGAs Decrease' tab-color='#6e597f'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <selection-collection>
+          <tuple-selection>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[usr:[cf]] last year lga count (copy):qk]</field>
+                  <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[usr:[cf]] last year lga count percent (copy):qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>30</value>
+                <value>0.379746835443038</value>
+              </tuple>
+            </tuple-reference>
+          </tuple-selection>
+        </selection-collection>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655462043655:nk]</field>
+            <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_632192801628803073:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='LGAs Increase' tab-color='#6e597f'>
+      <cards>
+        <edge name='left'>
+          <strip size='252'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655462043655:nk]</field>
+            <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_632192801627811840:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='X-axis label' tab-color='#6e597f'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655462043655:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Y-axis label' tab-color='#6e597f'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:[cf]] x-axis label (copy):nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+    <window class='worksheet' hidden='true' name='Year on Year comparison' tab-color='#6e597f'>
+      <cards>
+        <edge name='left'>
+          <strip size='346'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='305'>
+            <card mode='compact' param='[Parameters].[Parameter 1]' type='parameter' />
+            <card pane-specification-id='0' param='[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655455821826:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:CSA Offence Division (dpc):nk]</field>
+            <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:CSA Offence Subdivision (dpc):nk]</field>
+            <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:Calculation_577586655455821826:nk]</field>
+            <field>[federated.0ii8qw81w8uhqg12qhffa0aqxsn2].[none:LGA NAME:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='384' name='LGA Crime Rate Comparison Dashboard' width='384'>
+      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
+      1M7una0AVFZ7aG9pYLOgcPTgvu9sZyMVw1O7g2q7menZRWxWC6paYmp6nsOHD3Jv8h4akErF
+      qN/Rhs9TTefuXo4c2M2NkWvYnJUElgNM3BzF6nRybeQaVVUOrt+4Rf+lzzFbbQxf6WdzqwCA
+      pha5e2ec6yPXURxVZJMx4uktIiv3WY1uYrc7CC5NMfcgTCy4yM27cw+zBlcDjI6OolocLE7e
+      JBBKEgrMMDE9y9AXI3i9nu2xqfJw+Ln933qfoVCIPfueoaO9mXt3p2hu7aRjVw/h+5NU1zez
+      s6OT3GYKgNxmnL7BL7FZTPQPDLI4PUlsM09gepKCYie0NM1SMPo0dqsQP5oUgIGVCltcuvg5
+      7oadnD55lK1sllKhQIXFgqIof5+O0TSm796mY88zWMx//8hoaGiahtVqJ5GIUWGv5NDBXtZW
+      lklGQySzRdLpLIn1B6SzeRw2J/F4lJKqsr6ywODVUayOKtqaGzEBFquTtuYduH1eGhpqQS2S
+      yRUoFgr4a2vh6zwmcwXPHznOSy+9CIUckUiIWCyJhgmlworNYiWfz6KYTFgdVTgfuYl2c1sX
+      p069yO/feJ381iaKYsJR6cZuteD21lHv926/hsn08MbgmqZRKpWw2axks1tks1t4PdVkt7IU
+      c1lsLg+5bBa1WEAxb8+qFnIZVBQKRQ2fzwsmhfaOnVgsVpoaGvF53eTzxZ9hLwvx/aQADCwZ
+      jaIpZu7P3mNqOUKlluazvsv0PnsAAJfHg91qQQMyOZWdLU0Pn2uusJBKBLlw4QK3Zx6wq6WG
+      Tz/9jKGr1/HX1bO+vs6xk7/i1IuneO7Z3URicbx1O9jhtXH+/AWu3bzHs8/sxefzoZgUPB4P
+      bq8XRTHj83oxmy34avz07tlFKBTEbHXisG4fXN1uLw6HHWelixqPC4u9Eq2Up6iZSCaiVFVZ
+      cXmaKOXSRGMJ6mp9AFgsdnxeD3a7nYoKMz17esml40QTKepq/fhrvN8aH6vNSXW1C7QSfz13
+      nn29B7gxPMD9UIrDx46ipcNcGhjm6EsvU2MrcuFiH3t7t8eu0lNPS201wVAQX40fV7Ubm6UC
+      tCJfDF1meX2Dlsaan2EvC/H9TNo3E6vC8DRt+4xeUf7584Lt56pgUn5wIVfTNDRVxaQoP7gA
+      +7+3azL90OM1VFX7zu+3P9omTIqJ73umqqrw9RrH925dU5mdmWdXTzeqqj5cE3l0vDRNQ9U0
+      zI+M3Te/NynK19vW+GrwCp3PHsbvqfxR71+Ip0kKQIifjUappKL8yPIT4mmTAhBCCIOSNQAh
+      hDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAh
+      hDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAhhDAoKQAh
+      hDAoKQAhhDCo/wGh2Yxvy3PjNQAAAABJRU5ErkJggg==
+    </thumbnail>
+  </thumbnails>
+</workbook>
